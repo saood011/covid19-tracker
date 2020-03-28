@@ -1,38 +1,71 @@
-.App {
-  text-align: center;
+html {
+  font-family: system-ui, sans-serif;
+  font-size: 1.25rem;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body {
+  margin: 0;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+svg {
+  display: inline-block;
+  vertical-align: middle;
+}
+.rsm-geography {
+  outline: none;
+}
+.logo {
+  padding-left: 1rem;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+.table-font {
+  font-size: 0.8rem;
+}
+
+.font-white {
   color: white;
 }
-
-.App-link {
-  color: #61dafb;
+.title {
+  font-size: 1rem;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.container-main {
+  display: flex;
+}
+.side-table-font {
+  font-size: 0.7rem;
+}
+span {
+  border-radius: 5px;
+  text-align: center;
+}
+.td-flex {
+  display: flex;
+  flex-direction: column;
+}
+.yellow,
+.grey {
+  font-size: smaller;
+  text-align: center;
+}
+.total {
+  cursor: pointer;
+  text-decoration: underline;
+}
+.arrow {
+  visibility: hidden;
+}
+th:hover .arrow {
+  visibility: visible;
+}
+.linkedin {
+  padding-top: 5px;
+  padding-left: 5px;
+}
+.footer {
+  font-size: small;
+  height: 30px;
+  display: flex;
+}
+.footer-copyright {
+  padding-top: 5px;
 }
