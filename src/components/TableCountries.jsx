@@ -38,24 +38,20 @@ export default function TableCountries() {
     <div
       style={{
         minHeight: "100vh",
-        fontSize: "10px",
         display: "flex",
         justifyContent: "center"
       }}
     >
-      <table className="centered striped all-countries-table">
+      <table className="centered striped all-countries-table ">
         <thead>
           <tr className="rt">
             <th>
-              {" "}
               <div className="rotated nowidth">#</div>
             </th>
             <th style={{ verticalAlign: "middle" }}>
-              {" "}
               <div>Country</div>
             </th>
             <th>
-              {" "}
               <div className="rotated nowidth">Total cases</div>
             </th>
             <th>

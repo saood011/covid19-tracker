@@ -8,15 +8,38 @@ export default function Nav() {
     <div>
       <nav>
         <div className="nav-wrapper ">
-          <a href="#!" className="logo">
+          <a href="/" className="logo">
             COVID-19 Tracker
+          </a>
+          <a
+            href="/"
+            className="navItem grey waves-effect waves-yellow btn-small margin-left hoverable "
+          >
+            Home
+          </a>
+          <a
+            href="/countries"
+            className="navItem grey waves-effect waves-yellow btn-small margin-left hoverable "
+          >
+            Countries
+          </a>
+          <a
+            href="/news"
+            className=" navItem grey waves-effect waves-yellow btn-small margin-left hoverable "
+          >
+            News
+          </a>
+          <a
+            href="/timeline"
+            className="navItem grey waves-effect waves-yellow btn-small margin-left hoverable "
+          >
+            Timeline
           </a>
           <p data-target="mobile-demo" className="sidenav-trigger">
             <i className="material-icons" onClick={() => setOpenPanel(true)}>
               menu
             </i>
           </p>
-
           <SlidingPanel type={"left"} isOpen={openPanel} size={30}>
             <div>
               <i
@@ -37,7 +60,7 @@ export default function Nav() {
                 </li>
                 <li className="grey hoverable">
                   <a href="/countries" className="grey ">
-                    All Countries
+                    Countries
                   </a>
                 </li>
                 <li className="grey hoverable">
