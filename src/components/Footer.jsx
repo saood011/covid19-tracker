@@ -13,7 +13,6 @@ export default function Footer() {
         style={{ background: "#2B373B", fontSize: "10px" }}
         buttonStyle={{ color: "#4e503b", fontSize: "10px" }}
         expires={150}
-        debug={true}
       >
         This website uses cookies to enhance the user experience.{" "}
         <a

@@ -129,7 +129,7 @@ const MapChart = () => {
             <Graticule stroke="#E4E5E6" strokeWidth={0.5} />
 
             <Geographies geography={geoUrl}>
-              {({ geographies, projection }) =>
+              {({ geographies }) =>
                 geographies.map(geo => {
                   const arr = [];
                   mapValues(...allCountriesData, v => arr.push(v));
@@ -139,7 +139,6 @@ const MapChart = () => {
                     <Geography
                       key={geo.rsmKey}
                       geography={geo}
-                      projection={projection}
                       data-tip={`${geo.properties.NAME} - ${totalCases(
                         geo.properties.ISO_A2
                       )} infected`}

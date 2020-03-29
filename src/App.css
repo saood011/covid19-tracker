@@ -82,3 +82,57 @@ th:hover .arrow {
 .top-countries td {
   height: 70px;
 }
+.panel-content {
+  background-color: #e57373;
+}
+.close-panel {
+  position: absolute;
+  right: 71vw;
+  cursor: pointer;
+}
+li {
+  width: 100%;
+  text-align: center;
+  margin-top: 10px;
+}
+.all-countries-table > thead > tr > th {
+  position: sticky;
+  top: 0px;
+  background-color: black;
+  color: white;
+}
+
+.all-countries-table {
+  width: fit-content;
+}
+.all-countries-table > * > tr,
+th,
+td {
+  border: 1px solid white;
+  font-size: large;
+}
+
+@media only screen and (max-width: 600px) {
+  .all-countries-table > * > tr,
+  th,
+  td {
+    border: 1px solid white;
+    font-size: 10px;
+  }
+  .rt {
+    height: 150px; /* fixed height . set fixed width to rotated elements */
+  }
+  .rt th {
+    vertical-align: top;
+    width: 3em;
+    /* allow about 2 lines in rotated cells */
+  }
+  .rt .rotated {
+    width: 100px; /* a liitle less than parents height */
+    transform: rotate(270deg) translatex(-100%);
+    transform-origin: top left;
+  }
+  .nowidth {
+    margin-right: -130px; /* reduce virtually width needed */
+  }
+}
