@@ -31,7 +31,7 @@ export default class AllCountries extends Component {
       <div>
         {this.state.mydata ? (
           <div>
-            <table className="red darken-2 centered side-table-font ">
+            <table className="red lighten-2 centered side-table-font top-countries">
               <thead>
                 <tr className="font-white">
                   <th colSpan="3">Worst affected countries</th>
@@ -72,17 +72,33 @@ export default class AllCountries extends Component {
                       <td>
                         <span className="td-flex">
                           <span>{v.total_cases}</span>
-
-                          <span class="yellow blink darken-1 ">
-                            +{v.total_new_cases_today}
-                          </span>
+                          {v.total_new_cases_today === 0 ? null : (
+                            <span class="yellow darken-1 ">
+                              +{v.total_new_cases_today}{" "}
+                              <span
+                                class="material-icons red-text blink"
+                                style={{ fontSize: "10px" }}
+                              >
+                                arrow_upward
+                              </span>
+                            </span>
+                          )}
                         </span>
                       </td>
                       <td>
                         <span className="td-flex">
                           <span>{v.total_deaths}</span>
-
-                          <span class="grey">+{v.total_new_deaths_today}</span>
+                          {v.total_new_deaths_today === 0 ? null : (
+                            <span class="grey">
+                              +{v.total_new_deaths_today}{" "}
+                              <span
+                                class="material-icons red-text blink"
+                                style={{ fontSize: "10px" }}
+                              >
+                                arrow_upward
+                              </span>
+                            </span>
+                          )}
                         </span>
                       </td>
                     </tr>

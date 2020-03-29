@@ -107,8 +107,10 @@ const MapChart = () => {
         </tr>
       </tbody>
     </table>`,
-      confirmButtonText: "Close",
-      confirmButtonColor: "red"
+      showCancelButton: false,
+      showCloseButton: true,
+      showConfirmButton: false,
+      focusConfirm: true
     });
   };
 

@@ -4,7 +4,7 @@ export default function Nav() {
   return (
     <div>
       <nav>
-        <div class="nav-wrapper red darken-3">
+        <div class="nav-wrapper ">
           <a href="#!" class="logo">
             COVID-19 Tracker
           </a>

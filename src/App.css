@@ -5,6 +5,7 @@ html {
 
 body {
   margin: 0;
+  background-color: grey;
 }
 
 svg {
@@ -19,7 +20,7 @@ svg {
 }
 
 .table-font {
-  font-size: 0.8rem;
+  font-size: 0.5rem;
 }
 
 .font-white {
@@ -68,4 +69,16 @@ th:hover .arrow {
 }
 .footer-copyright {
   padding-top: 5px;
+}
+.blink {
+  animation: blinker 1s step-start infinite;
+}
+
+@keyframes blinker {
+  50% {
+    opacity: 0;
+  }
+}
+.top-countries td {
+  height: 70px;
 }
