@@ -10,15 +10,15 @@ export default function Footer() {
         location="bottom"
         buttonText="Ok"
         cookieName="myAwesomeCookieName2"
-        style={{ background: "#2B373B" }}
-        buttonStyle={{ color: "#4e503b", fontSize: "13px" }}
+        style={{ background: "#2B373B", fontSize: "10px" }}
+        buttonStyle={{ color: "#4e503b", fontSize: "10px" }}
         expires={150}
         debug={true}
       >
         This website uses cookies to enhance the user experience.{" "}
         <a
           href="https://www.privacypolicygenerator.info/live.php?token=JJbCUiLyhgQ2OW8h336IrZvIZNmWs3WU"
-          style={{ fontSize: "10px" }}
+          style={{ fontSize: "8px" }}
           target="blank"
         >
           Privacy Policy

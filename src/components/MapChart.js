@@ -115,7 +115,11 @@ const MapChart = () => {
   };
 
   return isLoading ? (
-    <div style={{ minHeight: "100vh" }}>loading...</div>
+    <div style={{ minHeight: "100vh" }}>
+      <div class="progress">
+        <div class="indeterminate"></div>
+      </div>
+    </div>
   ) : (
     <div className="row" style={{ padding: "0px", margin: "0px" }}>
       <div className="col s12 m9" style={{ padding: "0px" }}>
