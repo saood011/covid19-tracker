@@ -96,14 +96,10 @@ li {
 .all-countries-table > thead > tr > th {
   position: sticky;
   top: 0px;
-  background-color: black;
+  background-color: rgb(95, 93, 93);
   color: white;
   text-align: left;
   cursor: pointer;
-}
-
-.all-countries-table {
-  width: fit-content;
 }
 
 .top-countries {
@@ -146,4 +142,28 @@ li {
 table.all-countries-table tr td,
 table.all-countries-table thead th {
   border: 1px solid white;
+}
+.news-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.card {
+  width: 300px;
+  margin: 5px;
+}
+.news-image {
+  height: 200px;
+}
+.news-time {
+  font-size: 10px;
+  color: grey;
+  padding-left: 24px;
+  position: absolute;
+  padding-bottom: 5px;
+  bottom: 0px;
+}
+.card-content {
+  font-size: small;
+  text-align: justify;
 }

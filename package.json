@@ -15,6 +15,7 @@
     "jquery": "^3.4.1",
     "lodash.mapvalues": "^4.6.0",
     "materialize-css": "^1.0.0-rc.2",
+    "moment": "^2.24.0",
     "path": "^0.12.7",
     "react": "^16.13.1",
     "react-cookie-consent": "^3.0.0",
