@@ -98,6 +98,8 @@ li {
   top: 0px;
   background-color: black;
   color: white;
+  text-align: left;
+  cursor: pointer;
 }
 
 .all-countries-table {
@@ -115,7 +117,7 @@ li {
 
   .all-countries-table {
     border: 1px solid white;
-    font-size: small;
+    font-size: 10px;
   }
   .rt {
     height: 150px; /* fixed height . set fixed width to rotated elements */
@@ -129,6 +131,10 @@ li {
     width: 120px; /* a liitle less than parents height */
     transform: rotate(270deg) translatex(-100%);
     transform-origin: top left;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
   }
   .nowidth {
     margin-right: -130px; /* reduce virtually width needed */

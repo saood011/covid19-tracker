@@ -21,13 +21,60 @@ export default function TableCountries() {
     });
   }, []);
 
-  const sortDeaths = async () => {
-    const mydata = allCountriesData.sort(
+  const sortDeaths = () => {
+    setIsLoading(true);
+    const mydata = [...allCountriesData].sort(
       (a, b) => b.total_deaths - a.total_deaths
     );
-    await setallCountriesData(mydata);
+    console.log(mydata);
+    setallCountriesData(mydata);
+    setIsLoading(false);
   };
-
+  const sortCases = () => {
+    setIsLoading(true);
+    const mydata = [...allCountriesData].sort(
+      (a, b) => b.total_cases - a.total_cases
+    );
+    console.log(mydata);
+    setallCountriesData(mydata);
+    setIsLoading(false);
+  };
+  const sortNewCases = () => {
+    setIsLoading(true);
+    const mydata = [...allCountriesData].sort(
+      (a, b) => b.total_new_cases_today - a.total_new_cases_today
+    );
+    console.log(mydata);
+    setallCountriesData(mydata);
+    setIsLoading(false);
+  };
+  const sortNewDeaths = () => {
+    setIsLoading(true);
+    const mydata = [...allCountriesData].sort(
+      (a, b) => b.total_new_deaths_today - a.total_new_deaths_today
+    );
+    console.log(mydata);
+    setallCountriesData(mydata);
+    setIsLoading(false);
+  };
+  const sortRecovered = () => {
+    setIsLoading(true);
+    const mydata = [...allCountriesData].sort(
+      (a, b) => b.total_recovered - a.total_recovered
+    );
+    console.log(mydata);
+    setallCountriesData(mydata);
+    setIsLoading(false);
+  };
+  const sortSerious = () => {
+    setIsLoading(true);
+    const mydata = [...allCountriesData].sort(
+      (a, b) => b.total_serious_cases - a.total_serious_cases
+    );
+    console.log(mydata);
+    setallCountriesData(mydata);
+    setIsLoading(false);
+  };
   return isLoading ? (
     <div style={{ minHeight: "100vh" }}>
       <div class="progress">
@@ -42,37 +89,55 @@ export default function TableCountries() {
         justifyContent: "center"
       }}
     >
-      <table className="centered striped all-countries-table ">
+      <table className="centered grey lighten-2 all-countries-table ">
         <thead>
           <tr className="rt">
             <th>
               <div className="rotated nowidth">#</div>
             </th>
-            <th style={{ verticalAlign: "middle" }}>
+            <th style={{ verticalAlign: "bottom" }}>
               <div>Country</div>
             </th>
             <th>
-              <div className="rotated nowidth">Total cases</div>
+              <div onClick={sortCases} className="rotated nowidth">
+                <span class="material-icons ">unfold_more</span>
+                <span>Total cases</span>
+              </div>
             </th>
             <th>
               {" "}
-              <div className="rotated nowidth">Total deaths</div>
+              <div onClick={sortDeaths} className="rotated nowidth">
+                <span class="material-icons ">unfold_more</span>
+                Total deaths
+              </div>
             </th>
             <th>
               {" "}
-              <div className="rotated nowidth">New Cases today</div>
+              <div onClick={sortNewCases} className="rotated nowidth">
+                <span class="material-icons ">unfold_more</span>
+                New Cases today
+              </div>
             </th>
             <th>
               {" "}
-              <div className="rotated nowidth">New deaths today</div>
+              <div onClick={sortNewDeaths} className="rotated nowidth">
+                <span class="material-icons ">unfold_more</span>
+                New deaths today
+              </div>
             </th>
             <th>
               {" "}
-              <div className="rotated nowidth">Total recovered </div>
+              <div onClick={sortRecovered} className="rotated nowidth">
+                <span class="material-icons ">unfold_more</span>
+                Total recovered{" "}
+              </div>
             </th>
             <th>
               {" "}
-              <div className="rotated nowidth">Serious cases</div>
+              <div onClick={sortSerious} className="rotated nowidth">
+                <span class="material-icons ">unfold_more</span>
+                Serious cases
+              </div>
             </th>
           </tr>
         </thead>

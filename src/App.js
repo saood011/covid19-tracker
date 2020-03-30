@@ -16,8 +16,10 @@ function App() {
         <Switch>
           <Route path="/timeline" component={Timeline} />
           <Route path="/news" component={News} />
-          <Route path="/countries" component={TableCountries} />
-          <Route exact path="/" component={MapChart} />
+          <Route exact path="/">
+            <MapChart />
+            <TableCountries />
+          </Route>
         </Switch>
         <Footer />
       </div>
