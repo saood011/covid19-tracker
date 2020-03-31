@@ -11,6 +11,19 @@ export default function Nav() {
           <a href="/" className="logo">
             COVID-19 Tracker
           </a>
+          <a
+            href="/"
+            className="navItem grey waves-effect waves-yellow btn-small margin-left hoverable "
+          >
+            Home
+          </a>
+          <a
+            href="/news"
+            className=" navItem grey waves-effect waves-yellow btn-small margin-left hoverable "
+          >
+            News
+          </a>
+
           {/*    <a
             href="/"
             className="navItem grey waves-effect waves-yellow btn-small margin-left hoverable "
@@ -57,11 +70,6 @@ export default function Nav() {
                 <li className="grey hoverable">
                   <a href="/news" className="grey ">
                     News
-                  </a>
-                </li>
-                <li className="grey hoverable">
-                  <a href="/timeline" className="grey ">
-                    Timeline
                   </a>
                 </li>
               </ul>

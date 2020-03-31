@@ -99,41 +99,41 @@ export default function TableCountries() {
             <th style={{ verticalAlign: "bottom" }}>
               <div>Country</div>
             </th>
-            <th>
+            <th className="hoverable">
               <div onClick={sortCases} className="rotated nowidth">
                 <span class="material-icons ">unfold_more</span>
                 <span>Total cases</span>
               </div>
             </th>
-            <th>
+            <th className="hoverable">
               {" "}
               <div onClick={sortDeaths} className="rotated nowidth">
                 <span class="material-icons ">unfold_more</span>
                 Total deaths
               </div>
             </th>
-            <th>
+            <th className="hoverable">
               {" "}
               <div onClick={sortNewCases} className="rotated nowidth">
                 <span class="material-icons ">unfold_more</span>
                 New Cases today
               </div>
             </th>
-            <th>
+            <th className="hoverable">
               {" "}
               <div onClick={sortNewDeaths} className="rotated nowidth">
                 <span class="material-icons ">unfold_more</span>
                 New deaths today
               </div>
             </th>
-            <th>
+            <th className="hoverable">
               {" "}
               <div onClick={sortRecovered} className="rotated nowidth">
                 <span class="material-icons ">unfold_more</span>
                 Total recovered{" "}
               </div>
             </th>
-            <th>
+            <th className="hoverable">
               {" "}
               <div onClick={sortSerious} className="rotated nowidth">
                 <span class="material-icons ">unfold_more</span>
@@ -147,8 +147,10 @@ export default function TableCountries() {
           {allCountriesData.map((v, i) => (
             <tr key={i + v.title}>
               <td>{i + 1}</td>
-              <td>
-                {getEmojiFlag(v.code)} {v.title}
+              <td className="hoverable">
+                <a href={`/timeline/${v.code}`}>
+                  {getEmojiFlag(v.code)} {v.title}
+                </a>
               </td>
               <td>{v.total_cases}</td>
               <td>{v.total_deaths}</td>

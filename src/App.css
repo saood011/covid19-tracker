@@ -179,3 +179,9 @@ table.all-countries-table thead th {
 .news-button {
   margin-top: 5px;
 }
+.graph-flag {
+  position: absolute;
+  z-index: 100;
+  right: 6vw;
+  top: 12%;
+}
