@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import $ from "jquery";
 import mapValues from "lodash.mapvalues";
+import { getEmojiFlag } from "countries-list";
 
 export default function TableCountries() {
   const [allCountriesData, setallCountriesData] = useState([]);
@@ -146,7 +147,9 @@ export default function TableCountries() {
           {allCountriesData.map((v, i) => (
             <tr key={i + v.title}>
               <td>{i + 1}</td>
-              <td>{v.title}</td>
+              <td>
+                {getEmojiFlag(v.code)} {v.title}
+              </td>
               <td>{v.total_cases}</td>
               <td>{v.total_deaths}</td>
               <td

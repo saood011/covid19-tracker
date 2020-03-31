@@ -167,3 +167,15 @@ table.all-countries-table thead th {
   font-size: small;
   text-align: justify;
 }
+
+.country-news-buttons {
+  padding-top: 5px;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-flow: row wrap;
+}
+.news-button {
+  margin-top: 5px;
+}
