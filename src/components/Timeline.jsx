@@ -32,9 +32,7 @@ export default function Timeline() {
         setcases(
           data.data
             .filter(
-              v =>
-                v.countrycode === country &&
-                moment(v.date).month() === moment().month()
+              v => v.countrycode === country && moment(v.date).month() === 2
             )
             .sort((a, b) => moment(a.date) - moment(b.date))
             .map(v => [
@@ -47,9 +45,7 @@ export default function Timeline() {
         setdeaths(
           data.data
             .filter(
-              v =>
-                v.countrycode === country &&
-                moment(v.date).month() === moment().month()
+              v => v.countrycode === country && moment(v.date).month() === 2
             )
             .sort((a, b) => moment(a.date) - moment(b.date))
             .map(v => [
@@ -62,9 +58,7 @@ export default function Timeline() {
         setrecovered(
           data.data
             .filter(
-              v =>
-                v.countrycode === country &&
-                moment(v.date).month() === moment().month()
+              v => v.countrycode === country && moment(v.date).month() === 2
             )
             .sort((a, b) => moment(a.date) - moment(b.date))
             .map(v => [
