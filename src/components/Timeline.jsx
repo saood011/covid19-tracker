@@ -13,60 +13,77 @@ export default function Timeline() {
   const [recovered, setrecovered] = useState([]);
   const [country, setCountry] = useState("IN");
   const [isLoading, setisLoading] = useState(false);
+
   useEffect(() => {
     setisLoading(true);
     setCountry(window.location.href.slice(-2));
     $.ajax({
       url: `${proxy}https://thevirustracker.com/timeline/map-data.json`,
+      crossDomain: true,
       dataType: "json",
       success: function(data) {
-        console.log(
-          data.data
-            .filter(
-              v => v.countrycode === country && moment(v.date).month() === 2
-            )
-            .sort((a, b) => moment(a.date) - moment(b.date))
-            .map(v => [v.date, v.cases, v.deaths, v.recovered])
-        );
+        const filteredAndSorted = data.data
+          .filter(
+            v => v.countrycode === country && moment(v.date).month() === 2
+          )
+          .sort((a, b) => moment(a.date) - moment(b.date));
+
+        const dailyCases = index => {
+          if (index === 0) {
+            return Number(filteredAndSorted[index].cases);
+          } else {
+            return (
+              Number(filteredAndSorted[index].cases) -
+              Number(filteredAndSorted[index - 1].cases)
+            );
+          }
+        };
+        const dailyDeaths = index => {
+          if (index === 0) {
+            return Number(filteredAndSorted[index].deaths);
+          } else {
+            return (
+              Number(filteredAndSorted[index].deaths) -
+              Number(filteredAndSorted[index - 1].deaths)
+            );
+          }
+        };
+        const dailyRecovered = index => {
+          if (index === 0) {
+            return Number(filteredAndSorted[index].recovered);
+          } else {
+            return (
+              Number(filteredAndSorted[index].recovered) -
+              Number(filteredAndSorted[index - 1].recovered)
+            );
+          }
+        };
+
+        console.log(filteredAndSorted.map((v, i) => [v.date, dailyCases(i)]));
 
         setcases(
-          data.data
-            .filter(
-              v => v.countrycode === country && moment(v.date).month() === 2
-            )
-            .sort((a, b) => moment(a.date) - moment(b.date))
-            .map(v => [
-              moment(v.date)
-                .date()
-                .toString(),
-              Number(v.cases)
-            ])
+          filteredAndSorted.map((v, i) => [
+            moment(v.date)
+              .date()
+              .toString(),
+            dailyCases(i)
+          ])
         );
         setdeaths(
-          data.data
-            .filter(
-              v => v.countrycode === country && moment(v.date).month() === 2
-            )
-            .sort((a, b) => moment(a.date) - moment(b.date))
-            .map(v => [
-              moment(v.date)
-                .date()
-                .toString(),
-              Number(v.deaths)
-            ])
+          filteredAndSorted.map((v, i) => [
+            moment(v.date)
+              .date()
+              .toString(),
+            dailyDeaths(i)
+          ])
         );
         setrecovered(
-          data.data
-            .filter(
-              v => v.countrycode === country && moment(v.date).month() === 2
-            )
-            .sort((a, b) => moment(a.date) - moment(b.date))
-            .map(v => [
-              moment(v.date)
-                .date()
-                .toString(),
-              Number(v.recovered)
-            ])
+          filteredAndSorted.map((v, i) => [
+            moment(v.date)
+              .date()
+              .toString(),
+            dailyRecovered(i)
+          ])
         );
         setisLoading(false);
       }
@@ -88,7 +105,7 @@ export default function Timeline() {
               <div class="indeterminate"></div>
             </div>
           }
-          data={[["March", "Total Cases"], ...cases]}
+          data={[["March", "Cases this day"], ...cases]}
           options={{
             chartArea: { width: "50%" },
 
@@ -100,7 +117,7 @@ export default function Timeline() {
               min: 0
             },
             chart: {
-              title: "Infected cases growth in March",
+              title: "Daily cases in March",
               subtitle: ""
             }
           }}
@@ -118,7 +135,7 @@ export default function Timeline() {
               <div class="indeterminate"></div>
             </div>
           }
-          data={[["March", "Deaths"], ...deaths]}
+          data={[["March", "Deaths this day"], ...deaths]}
           options={{
             // Material design options
             legend: { position: "none" },
@@ -132,7 +149,7 @@ export default function Timeline() {
               min: 100
             },
             chart: {
-              title: "Death growth in March",
+              title: "Daily deaths in March",
               subtitle: ""
             }
           }}
@@ -149,7 +166,7 @@ export default function Timeline() {
               <div class="indeterminate"></div>
             </div>
           }
-          data={[["March", "Total Recovered"], ...recovered]}
+          data={[["March", "Recovery this day"], ...recovered]}
           options={{
             // Material design options
             legend: { position: "none" },
@@ -164,7 +181,7 @@ export default function Timeline() {
               min: 100
             },
             chart: {
-              title: "Number of recovered cases in March",
+              title: "Daily recovered cases in March",
               subtitle: ""
             }
           }}

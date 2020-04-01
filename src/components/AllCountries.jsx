@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import mapValues from "lodash.mapvalues";
+import moment from "moment";
 
 export default class AllCountries extends Component {
   state = { mydata: [] };
@@ -33,6 +34,16 @@ export default class AllCountries extends Component {
           <div>
             <table className="red lighten-2 centered side-table-font top-countries">
               <thead>
+                <tr className="font-white">
+                  <th
+                    colSpan="3"
+                    style={{
+                      fontSize: "xx-small"
+                    }}
+                  >
+                    <span>{moment().format("llll")}</span>
+                  </th>
+                </tr>
                 <tr className="font-white">
                   <th colSpan="3">Worst affected countries</th>
                 </tr>

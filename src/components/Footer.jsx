@@ -14,13 +14,22 @@ export default function Footer() {
         buttonStyle={{ color: "#4e503b", fontSize: "10px" }}
         expires={150}
       >
-        This website uses cookies to enhance the user experience.{" "}
+        This website uses cookies to enhance the user experience. By using this
+        website, you hereby consent to the privacy policy, disclaimer and agree
+        to its terms.
         <a
           href="https://www.privacypolicygenerator.info/live.php?token=JJbCUiLyhgQ2OW8h336IrZvIZNmWs3WU"
-          style={{ fontSize: "8px" }}
+          style={{ fontSize: "10px", paddingRight: "5px", paddingLeft: "5px" }}
           target="blank"
         >
           Privacy Policy
+        </a>
+        <a
+          href="https://www.disclaimergenerator.net/live.php?token=5aMP4kl8QUlnobveB6kv8CajYiEuexld"
+          style={{ fontSize: "10px" }}
+          target="blank"
+        >
+          Disclaimer
         </a>
       </CookieConsent>
       <footer class="red lighten-2 font-white">
