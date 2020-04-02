@@ -9,17 +9,7 @@ export default function TableCountries() {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    fetch(`https://thevirustracker.com/free-api?countryTotals=ALL`)
-      .then(res => res.json())
-      .then(data => {
-        console.log(data);
-        const arr = [];
-        mapValues(...data.countryitems, v => arr.push(v));
-        console.log(arr);
-        setallCountriesData(arr);
-        setIsLoading(false);
-      });
-    /*     $.ajax({
+    $.ajax({
       url: `${proxy}https://thevirustracker.com/free-api?countryTotals=ALL`,
       dataType: "json",
       success: function(data) {
@@ -29,7 +19,7 @@ export default function TableCountries() {
         setallCountriesData(arr);
         setIsLoading(false);
       }
-    }); */
+    });
   }, []);
 
   const sortDeaths = () => {
