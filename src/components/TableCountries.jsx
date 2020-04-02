@@ -12,6 +12,7 @@ export default function TableCountries() {
     $.ajax({
       url: `${proxy}https://thevirustracker.com/free-api?countryTotals=ALL`,
       dataType: "json",
+      crossDomain: true,
       success: function(data) {
         const arr = [];
         mapValues(...data.countryitems, v => arr.push(v));

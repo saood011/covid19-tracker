@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import $ from "jquery";
-import mapValues from "lodash.mapvalues";
+/* import $ from "jquery";
+import mapValues from "lodash.mapvalues"; */
 import moment from "moment";
 import { getEmojiFlag } from "countries-list";
 import M from "materialize-css";
@@ -17,7 +17,8 @@ export default function News() {
   });
 
   useEffect(() => {
-    fetch(`http://newsapi.org/v2/top-headlines?country=${country}&category=health&apiKey=344451f302114071af24aad70ba2ad67
+    setIsLoading(true);
+    fetch(`https://newsapi.org/v2/top-headlines?country=${country}&category=health&apiKey=344451f302114071af24aad70ba2ad67
     `)
       .then(res => res.json())
       .then(data => {
@@ -143,7 +144,11 @@ export default function News() {
           state.articles.map((v, i) => (
             <div key={i + v.publishedAt} className="card">
               <div className="card-image">
-                <img className="news-image" src={v.urlToImage} alt="news" />
+                <img
+                  className="news-image"
+                  src={v.urlToImage}
+                  alt="News-desc"
+                />
                 <a
                   href={v.url}
                   class="btn-floating halfway-fab waves-effect waves-light red"
@@ -163,6 +168,12 @@ export default function News() {
         ) : (
           <p style={{ minHeight: "55vh" }}>No news found</p>
         )}
+        <p style={{ fontSize: "xx-small" }}>
+          Powered by{" "}
+          <a className="black-text" href="https://newsapi.org/" target="blank">
+            newsAPI
+          </a>{" "}
+        </p>
       </div>
     </div>
   );
