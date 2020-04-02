@@ -19,9 +19,9 @@ export default function WorldStat() {
           class="col s6 m3"
           style={{ display: "flex", justifyContent: "center" }}
         >
-          <div class="card teal lighten-1 white-text ">
+          <div class="card-stats card teal lighten-1 white-text ">
             <p style={{ margin: "0px" }}>Total Cases</p>
-            <span className="card-title">
+            <span className="card-stats card-title">
               <Odometer value={state.total_cases} format="(,ddd)" />
             </span>
           </div>
@@ -30,9 +30,9 @@ export default function WorldStat() {
           class="col s6 m3"
           style={{ display: "flex", justifyContent: "center" }}
         >
-          <div class="card red darken-3 white-text ">
+          <div class="card-stats card red darken-3 white-text ">
             <p style={{ margin: "0px" }}>Total Deaths</p>
-            <span className="card-title">
+            <span className="card-stats card-title">
               <Odometer value={state.total_deaths} format="(,ddd)" />
             </span>
           </div>
@@ -41,9 +41,9 @@ export default function WorldStat() {
           class="col s6 m3"
           style={{ display: "flex", justifyContent: "center" }}
         >
-          <div class="card yellow darken-1  ">
+          <div class="card-stats card yellow darken-1  ">
             <p style={{ margin: "0px" }}>New Cases </p>
-            <span className="card-title">
+            <span className="card-stats card-title">
               <Odometer value={state.total_new_cases_today} format="(,ddd)" />
             </span>
           </div>
@@ -52,9 +52,9 @@ export default function WorldStat() {
           class="col s6 m3"
           style={{ display: "flex", justifyContent: "center" }}
         >
-          <div class="card grey darken-1 white-text ">
+          <div class="card-stats card grey darken-1 white-text ">
             <p style={{ margin: "0px" }}>New Deaths </p>
-            <span className="card-title">
+            <span className="card-stats card-title">
               <Odometer value={state.total_new_deaths_today} format="(,ddd)" />
             </span>
           </div>

@@ -17,8 +17,16 @@ export default function News() {
   });
 
   useEffect(() => {
-    setIsLoading(true);
-    $.ajax({
+    fetch(`http://newsapi.org/v2/top-headlines?country=${country}&category=health&apiKey=344451f302114071af24aad70ba2ad67
+    `)
+      .then(res => res.json())
+      .then(data => {
+        setstate(data);
+        console.log(data.articles);
+        setIsLoading(false);
+      })
+      .catch(err => setError(err));
+    /*   $.ajax({
       url: `https://thevirustracker.com/free-api?countryNewsTotal=${country}`,
       dataType: "json",
       success: function(data) {
@@ -46,7 +54,7 @@ export default function News() {
         setIsLoading(false);
       },
       error: data => setError(data.statusText)
-    });
+    }); */
   }, [country]);
   return isLoading ? (
     <div style={{ minHeight: "100vh" }}>
@@ -77,10 +85,10 @@ export default function News() {
         </button>
         <button
           class="waves-effect waves-light btn-small news-button"
-          value="om"
+          value="GB"
           onClick={e => setCountry(e.target.value)}
         >
-          Oman {getEmojiFlag("OM")}
+          Britian {getEmojiFlag("GB")}
         </button>
 
         <button
@@ -107,6 +115,7 @@ export default function News() {
         <ul id="dropdown1" class="dropdown-content ">
           {allCountries.array.map(v => (
             <li
+              key={v.code}
               style={{
                 fontSize: "x-small",
                 padding: "2px"
@@ -130,24 +139,30 @@ export default function News() {
         >
           {getEmojiFlag(country.toUpperCase())}
         </h4>
-        {state.map((v, i) => (
-          <div key={i} className="card">
-            <div className="card-image">
-              <img className="news-image" src={v.image} alt="news" />
-              <a
-                href={v.url}
-                class="btn-floating halfway-fab waves-effect waves-light red"
-                target="blank"
-              >
-                <i class="material-icons">link</i>
-              </a>
+        {state.articles.length > 0 ? (
+          state.articles.map((v, i) => (
+            <div key={i + v.publishedAt} className="card">
+              <div className="card-image">
+                <img className="news-image" src={v.urlToImage} alt="news" />
+                <a
+                  href={v.url}
+                  class="btn-floating halfway-fab waves-effect waves-light red"
+                  target="blank"
+                >
+                  <i class="material-icons">link</i>
+                </a>
+              </div>
+              <div class="card-content">
+                <p>{v.title}</p>
+              </div>
+              <span className="news-time">
+                {moment(v.publishedAt).calendar()}
+              </span>
             </div>
-            <div class="card-content">
-              <p>{v.title}</p>
-            </div>
-            <span className="news-time">{v.time}</span>
-          </div>
-        ))}
+          ))
+        ) : (
+          <p style={{ minHeight: "55vh" }}>No news found</p>
+        )}
       </div>
     </div>
   );

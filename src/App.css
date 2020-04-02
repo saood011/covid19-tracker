@@ -166,7 +166,6 @@ table.all-countries-table thead th {
 }
 .card-content {
   font-size: small;
-  text-align: justify;
 }
 
 .country-news-buttons {
@@ -192,6 +191,6 @@ table.all-countries-table thead th {
 .swal2-popup {
   width: fit-content !important;
 }
-.card {
+.card-stats {
   width: 150px;
 }
