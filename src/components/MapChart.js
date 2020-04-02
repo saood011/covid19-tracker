@@ -120,9 +120,9 @@ const MapChart = () => {
 
   return isLoading ? (
     <div style={{ minHeight: "100vh" }}>
-      <p className="white center">
-        Under maintenance, please come back again later
-      </p>
+      <div class="progress">
+        <div class="indeterminate"></div>
+      </div>
     </div>
   ) : (
     <div className="row" style={{ padding: "0px", margin: "0px" }}>

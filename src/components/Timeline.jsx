@@ -91,7 +91,12 @@ export default function Timeline() {
   }, [country]);
 
   return isLoading ? (
-    <div>loading....</div>
+    <div>
+      {" "}
+      <div class="progress">
+        <div class="indeterminate"></div>
+      </div>
+    </div>
   ) : (
     <div style={{ minHeight: "100vh", padding: "10px" }}>
       <h5 className="graph-flag">{getEmojiFlag(country)}</h5>
