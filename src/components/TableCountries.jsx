@@ -9,18 +9,27 @@ export default function TableCountries() {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    $.ajax({
+    fetch(`https://thevirustracker.com/free-api?countryTotals=ALL`)
+      .then(res => res.json())
+      .then(data => {
+        console.log(data);
+        const arr = [];
+        mapValues(...data.countryitems, v => arr.push(v));
+        console.log(arr);
+        setallCountriesData(arr);
+        setIsLoading(false);
+      });
+    /*     $.ajax({
       url: `${proxy}https://thevirustracker.com/free-api?countryTotals=ALL`,
       dataType: "json",
       success: function(data) {
         const arr = [];
         mapValues(...data.countryitems, v => arr.push(v));
-        //   const cur = arr.filter(v => v.code === countryCode);
         console.log(arr);
         setallCountriesData(arr);
         setIsLoading(false);
       }
-    });
+    }); */
   }, []);
 
   const sortDeaths = () => {
@@ -79,8 +88,8 @@ export default function TableCountries() {
   };
   return isLoading ? (
     <div style={{ minHeight: "100vh" }}>
-      <div class="progress">
-        <div class="indeterminate"></div>
+      <div className="progress">
+        <div className="indeterminate"></div>
       </div>
     </div>
   ) : (
@@ -88,7 +97,8 @@ export default function TableCountries() {
       style={{
         minHeight: "100vh",
         display: "flex",
-        justifyContent: "center"
+        justifyContent: "center",
+        flexDirection: "column"
       }}
     >
       <table className="centered grey lighten-2 all-countries-table ">

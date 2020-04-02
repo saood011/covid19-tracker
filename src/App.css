@@ -15,6 +15,7 @@ svg {
 .rsm-geography {
   outline: none;
 }
+
 .logo {
   padding-left: 1rem;
 }
@@ -184,4 +185,13 @@ table.all-countries-table thead th {
   z-index: 100;
   right: 6vw;
   top: 12%;
+}
+.progress {
+  margin: 0px !important;
+}
+.swal2-popup {
+  width: fit-content !important;
+}
+.card {
+  width: 150px;
 }

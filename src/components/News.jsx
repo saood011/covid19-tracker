@@ -10,6 +10,7 @@ export default function News() {
   const [state, setstate] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [country, setCountry] = useState("de");
+  const [error, setError] = useState(null);
   useEffect(() => {
     let elems = document.querySelectorAll(".dropdown-trigger");
     M.Dropdown.init(elems, { inDuration: 300, outDuration: 225 });
@@ -43,14 +44,19 @@ export default function News() {
         }
         console.log(arr);
         setIsLoading(false);
-      }
+      },
+      error: data => setError(data.statusText)
     });
   }, [country]);
   return isLoading ? (
     <div style={{ minHeight: "100vh" }}>
-      <div class="progress">
-        <div class="indeterminate"></div>
-      </div>
+      {!error ? (
+        <div class="progress">
+          <div class="indeterminate"></div>
+        </div>
+      ) : (
+        <p className="white center">No news found</p>
+      )}
     </div>
   ) : (
     <div>

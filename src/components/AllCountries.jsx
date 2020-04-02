@@ -45,7 +45,9 @@ export default class AllCountries extends Component {
                   </th>
                 </tr>
                 <tr className="font-white">
-                  <th colSpan="3">Worst affected countries</th>
+                  <th colSpan="3" style={{ fontSize: "large" }}>
+                    Worst affected countries
+                  </th>
                 </tr>
 
                 <tr className="font-white">
@@ -72,7 +74,7 @@ export default class AllCountries extends Component {
               </thead>
               <tbody>
                 {this.state.mydata.map((v, i) =>
-                  i <= 8 ? (
+                  i <= 6 ? (
                     <tr
                       key={v.ourid}
                       className={

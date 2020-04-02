@@ -1,5 +1,4 @@
 import React, { memo, useState, useEffect } from "react";
-import $ from "jquery";
 import ReactTooltip from "react-tooltip";
 import Swal from "sweetalert2";
 
@@ -12,6 +11,7 @@ import {
 } from "react-simple-maps";
 import AllCountries from "./AllCountries";
 import mapValues from "lodash.mapvalues";
+import WorldStat from "./WorldStat";
 
 const geoUrl =
   "https://raw.githubusercontent.com/zcreativelabs/react-simple-maps/master/topojson-maps/world-110m.json";
@@ -60,18 +60,15 @@ const MapChart = () => {
   };
 
   useEffect(() => {
-    $.ajax({
-      url: `${proxy}https://thevirustracker.com/free-api?countryTotals=ALL`,
-
-      dataType: "json",
-      // This is the important part
-      success: function(data) {
+    fetch(`https://api.thevirustracker.com/free-api?countryTotals=ALL`)
+      .then(res => res.json())
+      .then(data => {
+        console.log("success");
         setallCountriesData(data.countryitems);
         console.log(data.countryitems);
         setState(data.countryitems);
         setIsLoading(false);
-      }
-    });
+      });
   }, []);
 
   useEffect(() => {
@@ -88,26 +85,36 @@ const MapChart = () => {
     console.log(cur[0].title);
     //return cur.length > 0 ? cur[0].total_cases : 0;
     Swal.fire({
-      html: `  <table class="striped centered table-font">
+      html: `  
+      <table style="width: '50%'" class="striped centered table-font">
       <thead>
         <tr> 
-        <th colspan='4' class='title'>
+        <th colspan='2' class='title'>
         ${cur[0].title.toUpperCase()}
         </th>
-        </tr>
-        <tr>
-            <th>Total Cases</th>
-            <th>Total Deaths</th>
-            <th>New Cases Today</th>
-            <th>New Deaths Today</th>
         </tr>
       </thead>
       <tbody>
         <tr>
+          <td>Total Cases</td>
           <td>${cur[0].total_cases}</td>
+        </tr>
+        <tr>
+          <td>Total Deaths</td>
           <td class='red font-white lighten-2 pulse'>${cur[0].total_deaths}</td>
+        </tr>
+        <tr>
+          <td>Total New Cases Today</td>
           <td >${cur[0].total_new_cases_today}</td>
-          <td class='red lighten-3 pulse'>${cur[0].total_new_deaths_today}</td>
+        </tr>
+
+        <tr>
+          <td>Total New Deaths Today</td>
+          <td class='red lighten-3'>${cur[0].total_new_deaths_today}</td>
+        </tr>
+        <tr>
+        <td>Total Recovered</td>
+        <td class='green'>${cur[0].total_recovered}</td>
         </tr>
       </tbody>
     </table>`,
@@ -120,16 +127,18 @@ const MapChart = () => {
 
   return isLoading ? (
     <div style={{ minHeight: "100vh" }}>
-      <div class="progress">
-        <div class="indeterminate"></div>
+      <div className="progress">
+        <div className="indeterminate"></div>
       </div>
     </div>
   ) : (
     <div className="row" style={{ padding: "0px", margin: "0px" }}>
+      <WorldStat />
+
       <div className="col s12 m9" style={{ padding: "0px" }}>
         <div style={wrapperStyles}>
-          <ComposableMap projectionConfig={{ scale: 200 }} height={602}>
-            <Sphere stroke="#E4E5E6" strokeWidth={2} />
+          <ComposableMap projectionConfig={{ scale: 200 }} height={530}>
+            <Sphere stroke="#E4E5E6" strokeWidth={0.5} />
             <Graticule stroke="#E4E5E6" strokeWidth={0.5} />
 
             <Geographies geography={geoUrl}>
@@ -170,7 +179,7 @@ const MapChart = () => {
           <ReactTooltip />
         </div>
       </div>
-      <div className="col s12 m3" style={{ padding: "0px" }}>
+      <div className="col s12 m3" style={{ padding: "0px", height: "100%" }}>
         <AllCountries data={state} />
       </div>
     </div>

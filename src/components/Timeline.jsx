@@ -91,8 +91,7 @@ export default function Timeline() {
   }, [country]);
 
   return isLoading ? (
-    <div>
-      {" "}
+    <div style={{ minHeight: "90vh" }}>
       <div class="progress">
         <div class="indeterminate"></div>
       </div>
