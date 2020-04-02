@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import $ from "jquery";
 import mapValues from "lodash.mapvalues";
 import { getEmojiFlag } from "countries-list";
+const proxy = "https://cors-anywhere.herokuapp.com/";
 
 export default function TableCountries() {
   const [allCountriesData, setallCountriesData] = useState([]);
@@ -9,7 +10,7 @@ export default function TableCountries() {
 
   useEffect(() => {
     $.ajax({
-      url: "https://thevirustracker.com/free-api?countryTotals=ALL",
+      url: `${proxy}https://thevirustracker.com/free-api?countryTotals=ALL`,
       dataType: "json",
       success: function(data) {
         const arr = [];

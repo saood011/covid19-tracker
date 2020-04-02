@@ -46,6 +46,8 @@ const wrapperStyles = {
 };
 
 const MapChart = () => {
+  const proxy = "https://cors-anywhere.herokuapp.com/";
+
   const [state, setState] = useState({});
   const [allCountriesData, setallCountriesData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -59,8 +61,10 @@ const MapChart = () => {
 
   useEffect(() => {
     $.ajax({
-      url: "https://thevirustracker.com/free-api?countryTotals=ALL",
+      url: `${proxy}https://thevirustracker.com/free-api?countryTotals=ALL`,
+
       dataType: "json",
+      // This is the important part
       success: function(data) {
         setallCountriesData(data.countryitems);
         console.log(data.countryitems);
@@ -116,9 +120,9 @@ const MapChart = () => {
 
   return isLoading ? (
     <div style={{ minHeight: "100vh" }}>
-      <div class="progress">
-        <div class="indeterminate"></div>
-      </div>
+      <p className="white center">
+        Under maintenance, please come back again later
+      </p>
     </div>
   ) : (
     <div className="row" style={{ padding: "0px", margin: "0px" }}>
