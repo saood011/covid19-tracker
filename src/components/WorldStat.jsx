@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from "react";
 import Odometer from "react-odometerjs";
 import "odometer/themes/odometer-theme-minimal.css";
+const proxy = "https://cors-anywhere.herokuapp.com/";
 
 export default function WorldStat() {
   const [state, setState] = useState([]);
   useEffect(() => {
     fetch(`https://api.thevirustracker.com/free-api?global=stats`)
-      .then(res => res.json())
-      .then(data => {
+      .then((res) => res.json())
+      .then((data) => {
         setState(data.results[0]);
         console.log(data.results[0]);
       });

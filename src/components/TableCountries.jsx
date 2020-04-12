@@ -13,13 +13,13 @@ export default function TableCountries() {
       url: `${proxy}https://thevirustracker.com/free-api?countryTotals=ALL`,
       dataType: "json",
       crossDomain: true,
-      success: function(data) {
+      success: function (data) {
         const arr = [];
-        mapValues(...data.countryitems, v => arr.push(v));
+        mapValues(...data.countryitems, (v) => arr.push(v));
         console.log(arr);
         setallCountriesData(arr);
         setIsLoading(false);
-      }
+      },
     });
   }, []);
 
@@ -77,6 +77,7 @@ export default function TableCountries() {
     setallCountriesData(mydata);
     setIsLoading(false);
   };
+
   return isLoading ? (
     <div style={{ minHeight: "100vh" }}>
       <div className="progress">
@@ -89,7 +90,7 @@ export default function TableCountries() {
         minHeight: "100vh",
         display: "flex",
         justifyContent: "center",
-        flexDirection: "column"
+        flexDirection: "column",
       }}
     >
       <table className="centered grey lighten-2 all-countries-table ">
@@ -142,6 +143,9 @@ export default function TableCountries() {
                 Serious cases
               </div>
             </th>
+            <th>
+              <div className="rotated nowidth">Death ratio</div>
+            </th>
           </tr>
         </thead>
 
@@ -151,7 +155,7 @@ export default function TableCountries() {
               <td>{i + 1}</td>
               <td className="hoverable">
                 <a
-                  href={`/timeline/${v.code}`}
+                  href={`/timeline/${v.title}`}
                   target="blank"
                   style={{ textDecoration: "underline" }}
                   title="Go to graph timeline"
@@ -175,6 +179,11 @@ export default function TableCountries() {
               </td>
               <td>{v.total_recovered}</td>
               <td>{v.total_serious_cases}</td>
+              <td>
+                {v.total_cases > 0
+                  ? ((v.total_deaths / v.total_cases) * 100).toFixed(1) + "%"
+                  : "NA"}
+              </td>
             </tr>
           ))}
         </tbody>

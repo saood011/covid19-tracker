@@ -7,7 +7,7 @@ import {
   Geographies,
   Geography,
   Sphere,
-  Graticule
+  Graticule,
 } from "react-simple-maps";
 import AllCountries from "./AllCountries";
 import mapValues from "lodash.mapvalues";
@@ -16,8 +16,8 @@ import WorldStat from "./WorldStat";
 const geoUrl =
   "https://raw.githubusercontent.com/zcreativelabs/react-simple-maps/master/topojson-maps/world-110m.json";
 
-const colorScale = cases => {
-  if (cases < 100) return "#ffedea";
+const colorScale = (cases) => {
+  if (cases < 50) return "#fffbfd";
   else if (cases < 1000) return "#ffcec5";
   else if (cases < 5000) return "#ffad9f";
   else if (cases < 10000) return "#ff8a75";
@@ -25,7 +25,8 @@ const colorScale = cases => {
   else if (cases < 30000) return "#e2492d";
   else if (cases < 50000) return "#be3d26";
   else if (cases < 85000) return "#9a311f";
-  return "#782618";
+  else if (cases < 200000) return "#782618";
+  return "#691b1b";
 };
 
 /* const rounded = num => {
@@ -42,7 +43,7 @@ const wrapperStyles = {
   width: "100%",
   maxWidth: 980,
   margin: "0 auto",
-  background: "grey"
+  background: "grey",
 };
 
 const MapChart = () => {
@@ -52,23 +53,24 @@ const MapChart = () => {
   const [allCountriesData, setallCountriesData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
-  const totalCases = countryCode => {
+  const totalCases = (countryCode) => {
     const arr = [];
-    mapValues(...allCountriesData, v => arr.push(v));
-    const cur = arr.filter(v => v.code === countryCode);
+    mapValues(...allCountriesData, (v) => arr.push(v));
+    const cur = arr.filter((v) => v.code === countryCode);
     return cur.length > 0 ? cur[0].total_cases : 0;
   };
 
   useEffect(() => {
     fetch(`https://api.thevirustracker.com/free-api?countryTotals=ALL`)
-      .then(res => res.json())
-      .then(data => {
+      .then((res) => res.json())
+      .then((data) => {
         console.log("success");
         setallCountriesData(data.countryitems);
         console.log(data.countryitems);
         setState(data.countryitems);
         setIsLoading(false);
-      });
+      })
+      .catch((err) => console.log(err));
   }, []);
 
   useEffect(() => {
@@ -77,10 +79,10 @@ const MapChart = () => {
     }, 100);
   }, [isLoading]);
 
-  const clickedCountry = name => {
+  const clickedCountry = (name) => {
     const arr = [];
-    mapValues(...allCountriesData, v => arr.push(v));
-    const cur = arr.filter(v => v.code === name);
+    mapValues(...allCountriesData, (v) => arr.push(v));
+    const cur = arr.filter((v) => v.code === name);
     setState(...cur);
     console.log(cur[0].title);
     //return cur.length > 0 ? cur[0].total_cases : 0;
@@ -121,7 +123,7 @@ const MapChart = () => {
       showCancelButton: false,
       showCloseButton: true,
       showConfirmButton: false,
-      focusConfirm: true
+      focusConfirm: true,
     });
   };
 
@@ -143,10 +145,12 @@ const MapChart = () => {
 
             <Geographies geography={geoUrl}>
               {({ geographies }) =>
-                geographies.map(geo => {
+                geographies.map((geo) => {
                   const arr = [];
-                  mapValues(...allCountriesData, v => arr.push(v));
-                  const cur = arr.filter(v => v.code === geo.properties.ISO_A2);
+                  mapValues(...allCountriesData, (v) => arr.push(v));
+                  const cur = arr.filter(
+                    (v) => v.code === geo.properties.ISO_A2
+                  );
                   const cur1 = cur.length > 0 ? cur[0].total_cases : 0;
                   return (
                     <Geography
@@ -162,12 +166,12 @@ const MapChart = () => {
                       style={{
                         hover: {
                           fill: "#ff3",
-                          outline: "none"
+                          outline: "none",
                         },
                         pressed: {
                           fill: "#E42",
-                          outline: "none"
-                        }
+                          outline: "none",
+                        },
                       }}
                       fill={colorScale(cur ? cur1 : "#ddd")}
                     />
