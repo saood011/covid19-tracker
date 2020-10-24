@@ -18,7 +18,7 @@ export default function News() {
 
   useEffect(() => {
     setIsLoading(true);
-    fetch(`https://newsapi.org/v2/top-headlines?country=${country}&category=health&apiKey=344451f302114071af24aad70ba2ad67
+    fetch(`http://newsapi.org/v2/top-headlines?country=${country}&category=health&apiKey=344451f302114071af24aad70ba2ad67
     `)
       .then(res => res.json())
       .then(data => {
@@ -27,35 +27,7 @@ export default function News() {
         setIsLoading(false);
       })
       .catch(err => setError(err));
-    /*   $.ajax({
-      url: `https://thevirustracker.com/free-api?countryNewsTotal=${country}`,
-      dataType: "json",
-      success: function(data) {
-        if ([data][0].results && [data][0].results[0].data === "none") {
-          alert("Sorry, No news available!");
-        } else {
-          var arr = [];
-          mapValues(...data.countrynewsitems, v => {
-            if (
-              (moment(v.time).format("YYYY-MM-DD") ===
-                moment().format("YYYY-MM-DD") &&
-                v !== "ok") ||
-              (moment(v.time).format("YYYY-MM-DD") ===
-                moment()
-                  .subtract(1, "days")
-                  .format("YYYY-MM-DD") &&
-                v !== "ok")
-            ) {
-              arr.push(v);
-            }
-          });
-          setstate(arr.reverse());
-        }
-        console.log(arr);
-        setIsLoading(false);
-      },
-      error: data => setError(data.statusText)
-    }); */
+    
   }, [country]);
   return isLoading ? (
     <div style={{ minHeight: "100vh" }}>
