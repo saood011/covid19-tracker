@@ -32,7 +32,7 @@ export default class AllCountries extends Component {
       <div>
         {this.state.mydata ? (
           <div>
-            <table className="red lighten-2 centered side-table-font top-countries">
+            <table className="grey darken-2 centered side-table-font top-countries">
               <thead>
                 <tr className="font-white">
                   <th
@@ -78,7 +78,7 @@ export default class AllCountries extends Component {
                     <tr
                       key={v.ourid}
                       className={
-                        i < 6 ? `red lighten-${i} ` : `deep-orange lighten-5`
+                        i < 6 ? `grey lighten-${i} ` : `grey lighten-5`
                       }
                     >
                       <td style={{ textAlign: "center" }}>{v.title}</td>

@@ -7,7 +7,7 @@ export default function Nav() {
   return (
     <div>
       <nav>
-        <div className="nav-wrapper ">
+        <div className="nav-wrapper grey darken-2 header">
           <a href="/" className="logo">
             COVID-19 Tracker
           </a>

@@ -194,3 +194,6 @@ table.all-countries-table thead th {
 .card-stats {
   width: 150px;
 }
+.header{
+  text-align: left;
+}
