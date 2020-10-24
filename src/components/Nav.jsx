@@ -11,18 +11,19 @@ export default function Nav() {
           <a href="/" className="logo">
             COVID-19 Tracker
           </a>
+          {/*
           <a
             href="/"
             className="navItem grey waves-effect waves-yellow btn-small margin-left hoverable "
           >
             Home
-          </a>
-          <a
+          </a> */}
+    {/*       <a
             href="/news"
             className=" navItem grey waves-effect waves-yellow btn-small margin-left hoverable "
           >
             News
-          </a>
+          </a> */}
 
           {/*    <a
             href="/"
@@ -43,7 +44,7 @@ export default function Nav() {
           >
             Timeline
           </a> */}
-          <p data-target="mobile-demo" className="sidenav-trigger">
+          {/* <p data-target="mobile-demo" className="sidenav-trigger">
             <i className="material-icons" onClick={() => setOpenPanel(true)}>
               menu
             </i>
@@ -74,7 +75,7 @@ export default function Nav() {
                 </li>
               </ul>
             </div>
-          </SlidingPanel>
+          </SlidingPanel> */}
         </div>
       </nav>
     </div>
