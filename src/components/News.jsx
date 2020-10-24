@@ -5,6 +5,8 @@ import moment from "moment";
 import { getEmojiFlag } from "countries-list";
 import M from "materialize-css";
 import allCountries from "./allCountriesArray";
+const proxy = "https://cors-anywhere.herokuapp.com/";
+
 
 export default function News() {
   const [state, setstate] = useState([]);
@@ -18,7 +20,7 @@ export default function News() {
 
   useEffect(() => {
     setIsLoading(true);
-    fetch(`http://newsapi.org/v2/top-headlines?country=${country}&category=health&apiKey=344451f302114071af24aad70ba2ad67
+    fetch(`${proxy}https://newsapi.org/v2/top-headlines?country=${country}&category=health&apiKey=344451f302114071af24aad70ba2ad67
     `)
       .then(res => res.json())
       .then(data => {
@@ -27,7 +29,7 @@ export default function News() {
         setIsLoading(false);
       })
       .catch(err => setError(err));
-    
+   
   }, [country]);
   return isLoading ? (
     <div style={{ minHeight: "100vh" }}>
